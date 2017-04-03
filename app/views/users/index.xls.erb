@@ -1,0 +1,20 @@
+<table border="1">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Username Name</th>
+    <th>Email Name</th>
+    <th>Password Name</th>
+    <th>Birthday</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+    	<td><%= user.first_name %></td>
+    	<td><%= user.last_name %></td>
+    	<td><%= user.username %></td>
+    	<td><%= user.email %></td>
+    	<td><%= user.password %></td>
+    	<td><%= user.birthday %></td>
+    </tr>
+  <% end %>
+</table>
