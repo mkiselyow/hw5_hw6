@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	require 'roo'
 	# before_filter :check_auth
 	# before_filter :book, only: [:show, :edit, :update, :destroy]
 	
@@ -23,15 +24,24 @@ class UsersController < ApplicationController
 	end
 
 	def index
-    flash[:notice] = "Lorem Ipsum"
-    order = params[:order] || 'asc'
-    @users = User.order("id #{order}")
-    if params[:redirect]
-      redirect_to 'http://google.com' and return
-    else
-      render action: :index
-    end
-  end
+		@users = User.order(:username)
+		respond_to do |format|
+			format.html
+			format.xls #{ send_data @users.to_csv(col_sep: "\t") }
+			format.csv { send_data @users.to_csv}
+		end
+	end
+
+	# def index
+ #    flash[:notice] = "Lorem Ipsum"
+ #    order = params[:order] || 'asc'
+ #    @users = User.order("id #{order}")
+ #    if params[:redirect]
+ #      redirect_to 'http://google.com' and return
+ #    else
+ #      render action: :index
+ #    end
+ #  end
   
 
 	# def index
@@ -54,11 +64,11 @@ class UsersController < ApplicationController
 		#параметры ? :key = &
 		# @import = User::Import.new
 
-		# respond_to do |format|
-		# 	format.html
-		# 	format.csv { send_data @users.to_csv }
-		# 	format.xls  { send_data @users.to_csv(col_sep: "\t") }
-		# end
+	# 	respond_to do |format|
+	# 		format.html
+	# 		format.csv { send_data @users.to_csv }
+	# 		format.xls  { send_data @users.to_csv(col_sep: "\t") }
+	# 	end
 	# end
 
 

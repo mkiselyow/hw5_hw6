@@ -3,8 +3,9 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.22.5'
 gem 'mysql2', '0.3.21'
 gem 'test-unit', '~> 3.0'
-gem 'roo'
+
 gem 'iconv'
+gem 'roo-xls'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
@@ -26,7 +27,7 @@ end
 #   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 #   # gem 'therubyracer', :platforms => :ruby
 
-#   gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier', '>= 1.0.3'
 # end
 
 gem 'jquery-rails'
@@ -45,3 +46,4 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use debugger
 # gem 'debugger'
+gem 'roo'

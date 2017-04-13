@@ -19,9 +19,9 @@
   <tr>
     <th>First Name</th>
     <th>Last Name</th>
-    <th>Username Name</th>
-    <th>Email Name</th>
-    <th>Password Name</th>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Password</th>
     <th>Birthday</th>
   </tr>
   <% @users.each do |user| %>
@@ -36,15 +36,16 @@
   <% end %>
 </table>
 
-<h2>Users:</h2>
+<!-- <h2>Users:</h2>
 <ul>
   <% @users.each do |user|  %>
   <li><%= user.full_name %><li>
   <% end %>
-</ul>
+</ul> -->
 
+<h2>Import Products</h2>
 
-<% form_tag import_users_path, multipart: true do %>
+<%= form_tag import_users_path, multipart: true do %>
   <%= file_field_tag :file %>
   <%= submit_tag "Import" %>
 <% end %>
