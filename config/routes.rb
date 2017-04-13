@@ -1,4 +1,5 @@
 Courses::Application.routes.draw do
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,11 +49,15 @@ Courses::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'users#index'
+  root to: 'users#index'
   resources :users do
     collection { post :import}
   end
 
+  resources :sessions
+
+  resources :books # генерит 7 рутов (все)
+  resource :books # генерит 6 рутов кроме индекс
 
   # See how all your routes lay out with "rake routes"
 

@@ -4,9 +4,11 @@ gem 'rails', '3.2.22.5'
 gem 'mysql2', '0.3.21'
 gem 'test-unit', '~> 3.0'
 gem 'roo'
+gem 'iconv'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
+  gem 'pry'
 end
 
 # Bundle edge Rails instead:
@@ -27,10 +29,10 @@ end
 #   gem 'uglifier', '>= 1.0.3'
 # end
 
-# gem 'jquery-rails'
+gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

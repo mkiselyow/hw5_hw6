@@ -6,9 +6,19 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+  <body>
+    <div id="container">
+      <div id="user_header">
+        <%= link_to "Sign Up", new_user_path %> or
+        <%= link_to "Log In", new_session_path %>
+      </div>
 
-<%= yield %>
-
-</body>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, id: "flash_#{name}" %>
+      <% end %>
+    
+      <%= yield %> 
+    </div>
+  </body>
 </html>
+
