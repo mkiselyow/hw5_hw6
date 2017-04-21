@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.22.5'
 gem 'mysql2', '0.3.21'
-gem 'test-unit', '~> 3.0'
 
 gem 'iconv'
 gem 'roo-xls'

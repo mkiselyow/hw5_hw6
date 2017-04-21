@@ -1,0 +1,18 @@
+<h1>feed</h1>
+
+<h3>Publish post</h1>
+
+<%= form_for Post.new do |f| %>
+
+  <div class="field">
+    <%=  f.label :title %><br>
+    <%=  f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%=  f.label :body %><br>
+    <%=  f.text_field :body %>
+  </div>
+  
+  <div class="actions"><%= f.submit "Publish" %></div>
+<% end %>

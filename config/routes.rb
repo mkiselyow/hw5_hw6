@@ -55,6 +55,7 @@ Courses::Application.routes.draw do
   end
 
   resources :sessions
+  resources :posts
 
   resources :books # генерит 7 рутов (все)
   resource :books # генерит 6 рутов кроме индекс
