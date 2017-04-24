@@ -56,6 +56,7 @@ Courses::Application.routes.draw do
 
   resources :sessions
   resources :posts
+  # resources :posts, only: [:create, :destroy]
 
   resources :books # генерит 7 рутов (все)
   resource :books # генерит 6 рутов кроме индекс

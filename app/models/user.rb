@@ -1,13 +1,16 @@
 class User < ActiveRecord::Base
   # (название скоупа и лямба в квадратн скобках)
 has_secure_password
+# has_gravatar не работает
+  # include Gravtastic не работает
+  # gravtastic не работает
 
   after_save :say_bye
   before_create :say_hi
   before_destroy :die
 
   before_save { |user| user.email = email.downcase }
-  before_save { |user| user.username = username.downcase }
+  # before_save { |user| user.username = username.downcase }
 
   attr_accessible :first_name, :last_name, :email, :username, :password_confirmation, :birthday, :password, :user_id
   # before_save :encrypt_password

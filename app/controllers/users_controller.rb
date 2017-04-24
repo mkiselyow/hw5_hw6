@@ -17,20 +17,29 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(params[:user])
 		if @user.save
-			redirect_to root_url, notice: "Thank you for signing up!"
+			redirect_to @user, notice: "Thank you for signing up!"
 		else
 			render "new"
 		end
 	end
 
 	def index
-		@users = User.order(:username)
+		@users = User.order(:username).paginate(page: params[:page])
 		respond_to do |format|
 			format.html
 			format.xls #{ send_data @users.to_csv(col_sep: "\t") }
 			format.csv { send_data @users.to_csv}
 		end
 	end
+
+	def show
+    @user = User.find(params[:id])
+    @posts = @user.posts.paginate(page: params[:page])
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
 
 	# def index
  #    flash[:notice] = "Lorem Ipsum"

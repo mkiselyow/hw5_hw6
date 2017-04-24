@@ -1,71 +1,75 @@
-<h1>Hello world</h1>
+<div class="col-md-9">
+  <h1>Hello world</h1>
 
-        <h2>Users:</h2>
+          <h2>Users:</h2>
 
-        <button type="button" class="btn btn-default" aria-label="Left Align">
-          <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-        </button>
+          <button type="button" class="btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+          </button>
 
-        <button type="button" class="btn btn-default btn-lg">
-          <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
-        </button>
+          <button type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+          </button>
 
-        <p>
-          Download:
-          <%= link_to "CSV", users_path(format: "csv") %>
-          <%= link_to "Excel", users_path(format: "xls") %>
-        </p>
+          <p>
+            Download:
+            <%= link_to "CSV", users_path(format: "csv") %>
+            <%= link_to "Excel", users_path(format: "xls") %>
+          </p>
 
-        <h2>
-          Users:
-          <small>
-            <a id='list_toggle' href='#'>Hide</a>
-          </small></h2>
 
-        <ul class="user_list">
-          <% @users.each do |user| %>
-            <%= render 'user_row', user: user %>
-            <%= render partial: 'user_row', locals: { user: user}  %>
-          <% end %>
-        </ul>
-
-        <table>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Password</th>
-            <th>Birthday</th>
-          </tr>
-          <% @users.each do |user| %>
+          <%= will_paginate %>
+          <table class="table table-bordered">
             <tr>
-              <td><%= user.first_name %></td>
-              <td><%= user.last_name %></td>
-              <td><%= user.username %></td>
-              <td><%= user.email %></td>
-              <td><%= user.password %></td>
-              <td><%= user.birthday %></td>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Password</th>
+              <th>Birthday</th>
             </tr>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= user.first_name %></td>
+                <td><%= user.last_name %></td>
+                <td><%= link_to user.username, user_path(user) %></td>
+                <td><%= user.email %></td>
+                <td><%= user.password %></td>
+                <td><%= user.birthday %></td>
+              </tr>
+            <% end %>
+          </table>
+            <%= will_paginate %>  
+          
+          
+          <h2>Import Users</h2>
+
+          <%= form_tag import_users_path, multipart: true do %>
+            <%= file_field_tag :file %>
+            <%= submit_tag "Import" %>
           <% end %>
-        </table>
-
-
-        <h2>
-          Users:
-          <small>
-            <a id='list_toggle' href='#'>Hide</a>
-          </small></h2>
-        <ul class="user_list">
-          <% @users.each do |user|  %>
-          <li><%= user.full_name %><li>
-          <% end %>
-        </ul>
-
-        <h2>Import Users</h2>
-
-        <%= form_tag import_users_path, multipart: true do %>
-          <%= file_field_tag :file %>
-          <%= submit_tag "Import" %>
-        <% end %>
-
+</div>
+<div class="col-md-3">
+          <h2>
+            Users:
+            <small>
+              <a id='list_toggle' href='#'>Hide</a>
+            </small>
+          </h2>
+          <ul class="user_list">
+            <% @users.each do |user| %>
+              <%= render 'user_row', user: user %>
+              <%= render partial: 'user_row', locals: { user: user}  %>
+            <% end %>
+          </ul>
+          <h2>
+            Users:
+            <small>
+              <a id='list_toggle' href='#'>Hide</a>
+            </small></h2>
+          <ul class="user_list">
+            <% @users.each do |user|  %>
+            <li><%= user.full_name %><li>
+            <% end %>
+          </ul>
+</div>

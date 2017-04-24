@@ -1,6 +1,4 @@
-<h1>feed</h1>
-
-<h3>Publish post</h1>
+<h1>Edit Post</h1>
 
 <%= form_for @post do |f| %>
   <% if @post.errors.any? %>
@@ -21,6 +19,5 @@
     <%=  f.text_area :body %>
   </div>
   
-  <div class="actions"><%= f.submit "Publish" %></div>
+  <div class="actions"><%= f.submit "Update" %></div>
 <% end %>
-

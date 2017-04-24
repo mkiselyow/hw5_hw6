@@ -1,0 +1,22 @@
+<h1>Index Posts</h1>
+
+<h2>Posts:</h2>
+<%= will_paginate %>
+<ul class="posts">
+  <% @posts.each do |post|  %>
+  <li><strong><%= post.title %></strong><br><%= post.body %><li>
+  <p>
+    <%= link_to 'Edit', edit_post_path(post) %>
+    <%= link_to 'Delete', post, :confirm => "Are you sure?", :method => :delete %>
+  </p>
+  <hr>
+  <% end %>
+</ul>
+<p><%= link_to "Add a New Post", new_post_path %></p>
+<%= will_paginate %>
+
+
+
+<%#= @user.posts %>
+<%#= @user.@posts %>
+
