@@ -32,9 +32,4 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: courses
-  username: root 
-  password: m0678700130
-  host: localhost
   pool: 5
-  timeout: 5000
