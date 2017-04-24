@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20170422011146) do
 
   create_table "books", :force => true do |t|
     t.string "title"
-    t.text   "description"
+    t.string "description"
     t.string "price"
     t.string "year"
   end

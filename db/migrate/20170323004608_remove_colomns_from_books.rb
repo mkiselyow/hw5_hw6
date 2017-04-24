@@ -1,4 +1,4 @@
-pclass RemoveColomnsFromBooks < ActiveRecord::Migration
+class RemoveColomnsFromBooks < ActiveRecord::Migration
   def up
     remove_column :books, :name
   end

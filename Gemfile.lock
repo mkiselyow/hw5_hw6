@@ -119,8 +119,6 @@ GEM
     rake (12.0.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    rdoc-data (3.12)
-      rdoc (> 2.5, < 4.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     roo (2.7.1)
@@ -200,7 +198,6 @@ DEPENDENCIES
   pry
   rails (= 3.2.22.5)
   rails_12factor
-  rdoc-data
   roo
   roo-xls
   rspec-rails (~> 3.5)
