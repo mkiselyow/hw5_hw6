@@ -8,6 +8,7 @@ gem 'roo-xls'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'gravtastic'
+gem "rdoc-data"
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
