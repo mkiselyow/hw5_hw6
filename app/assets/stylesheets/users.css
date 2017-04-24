@@ -20,7 +20,7 @@
   display: block;
 }
 .timestamp {
-  color: $grayLight;
+  color: grey;
 }
 .gravatar {
   float: left;
