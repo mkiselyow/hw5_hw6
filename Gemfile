@@ -12,6 +12,8 @@ gem 'gravtastic'
 gem "rdoc-data"
 gem 'sass', '3.2.13' 
 gem 'thin'
+gem 'devise-async'
+gem 'em-postgres'
 
 
 group :development, :test do
