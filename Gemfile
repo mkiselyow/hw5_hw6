@@ -9,7 +9,9 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'gravtastic'
 gem "rdoc-data"
-gem 'sass', '3.2.13'
+gem 'sass', '3.2.13' 
+gem 'thin'
+
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'

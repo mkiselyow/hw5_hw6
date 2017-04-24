@@ -1,14 +1,11 @@
 class CreateBooks < ActiveRecord::Migration
-  def up
+  def change
   	  create_table :books do |t|
-  		t.string :title
-  		t.string :author
-  		t.integer :page_count
-  		t.timestamps
-  	end
-  end
+    		t.string :title
+    		t.string :author
+    		t.integer :page_count
 
-  def down
-  	drop_table :books
+    		t.timestamps
+  	end
   end
 end
