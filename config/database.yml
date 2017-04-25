@@ -33,3 +33,5 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
+  username: rbates
+  password:
