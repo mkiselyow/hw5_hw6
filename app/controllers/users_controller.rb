@@ -1,5 +1,6 @@
-class UsersController < ApplicationController
+	class UsersController < ApplicationController
 	require 'roo'
+	
 	# before_filter :check_auth
 	# before_filter :book, only: [:show, :edit, :update, :destroy]
 	
@@ -17,6 +18,8 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(params[:user])
 		if @user.save
+			session[:user_id] = @user.id
+			sign_in @user
 			redirect_to @user, notice: "Thank you for signing up!"
 		else
 			render "new"
@@ -95,4 +98,6 @@ class UsersController < ApplicationController
 	def book
 		@book ||= Book.find(params[:id])
 	end
+
+  
 end

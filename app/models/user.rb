@@ -8,6 +8,7 @@ has_secure_password
   after_save :say_bye
   before_create :say_hi
   before_destroy :die
+  before_save :create_remember_token
 
   before_save { |user| user.email = email.downcase }
   # before_save { |user| user.username = username.downcase }
@@ -97,24 +98,23 @@ has_secure_password
       else raise "Unknown file type: #{file.original_filename}"
       end
     end
-
-
-
-    private
+  private
   
-   def say_hi
-     puts '------- HELLO -------'
-   end
- 
-   def say_bye
-     puts '------- GOODBYE -------'
-   end
- 
-   def die
-     puts '------- I\'LL BE BACK -------'
-   end
-   
+    def say_hi
+      puts '------- HELLO -------'
+    end
 
+    def say_bye
+      puts '------- GOODBYE -------'
+    end
+
+    def die
+      puts '------- I\'LL BE BACK -------'
+    end
+
+    def create_remember_token
+      self.remember_token = SecureRandom.urlsafe_base64
+    end
 end
  
 

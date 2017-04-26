@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_filter :authorize, only: [:edit, :destroy, :update]
+
   def new
     @post = Post.new
   end
