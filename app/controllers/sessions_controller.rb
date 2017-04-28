@@ -19,6 +19,10 @@ class SessionsController < ApplicationController
     redirect_to root_url, notice: "Logged Out!"
   end
 
+  def home
+    @post = current_user.posts.build if signed_in?
+  end
+
 
 
   # def create

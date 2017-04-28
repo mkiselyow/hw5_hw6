@@ -1,21 +1,24 @@
 class PostsController < ApplicationController
   before_filter :authorize, only: [:edit, :destroy, :update]
+  before_filter :correct_user,   only: [:edit, :update]
 
   def new
     @post = Post.new
   end
 
   def create
-    @post = Post.new(params[:post])
+    @post = current_user.posts.build(params[:post])
     if @post.save
-      redirect_to users_path, notice: "Post published!"
+      flash[:success] = "Post created!"
+      redirect_to root_url
     else
-      render "new"
+      render 'static_pages/home'
     end
   end
 
   def index
     @posts = Post.order(:created_at).paginate(page: params[:page])
+    @post = current_user.posts.build if signed_in?
   end
 
   def post_params

@@ -21,10 +21,19 @@ class ApplicationController < ActionController::Base
   private 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    rescue ActiveRecord::RecordNotFound
   end
 
   def authorize
-    redirect_to signin_url, alert: "Not authorized" if current_user.nil?
-    end
+    # redirect_to signin_url, notice: "Not authorized" if current_user.nil?
+    redirect_to signin_url, alert: "Not authorized" unless signed_in?
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to root_path, notice: "Wrong URL!" unless current_user?(@user)
+    
+  end
+
   helper_method :current_user
 end

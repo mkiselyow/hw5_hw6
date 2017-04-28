@@ -1,5 +1,8 @@
 	class UsersController < ApplicationController
 	require 'roo'
+	before_filter :authorize, only: [:edit, :update]
+	before_filter :correct_user,   only: [:edit, :update]
+	before_filter :admin_user,     only: :destroy
 	
 	# before_filter :check_auth
 	# before_filter :book, only: [:show, :edit, :update, :destroy]
@@ -22,6 +25,7 @@
 			sign_in @user
 			redirect_to @user, notice: "Thank you for signing up!"
 		else
+			flash.now[:error] = 'Invalid email/password combination'
 			render "new"
 		end
 	end
@@ -42,6 +46,22 @@
 
   def edit
     @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+    	sign_in @user
+      redirect_to @user, notice: "Updated!"
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User destroyed."
+    redirect_to users_url
   end
 
 	# def index
@@ -99,5 +119,14 @@
 		@book ||= Book.find(params[:id])
 	end
 
-  
+  def signed_in_user
+    unless signed_in?
+      store_location
+      redirect_to signin_url, notice: "Please sign in."
+    end
+  end
+
+  def admin_user
+      redirect_to(root_path) unless current_user.admin?
+  end
 end

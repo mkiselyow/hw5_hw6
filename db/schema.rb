@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170426003833) do
+ActiveRecord::Schema.define(:version => 20170427022312) do
 
   create_table "books", :force => true do |t|
     t.string   "title"
@@ -87,8 +87,8 @@ ActiveRecord::Schema.define(:version => 20170426003833) do
 
   create_table "users", :force => true do |t|
     t.string   "email"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "username"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20170426003833) do
     t.string   "password_digest"
     t.integer  "user_id"
     t.string   "remember_token"
+    t.boolean  "admin",           :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
