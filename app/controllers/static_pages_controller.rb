@@ -11,8 +11,9 @@ class StaticPagesController < ApplicationController
     @post.destroy
     # redirect_to root_path, :notice => 'The Post has been deleted!'
     respond_to do |format|
-      format.html { redirect_to root_path }
-      format.js
+      format.html { redirect_to posts_url }
+      format.js { render :layout => false }
+      format.json { head :no_content }
     end
   end
 
@@ -31,7 +32,7 @@ class StaticPagesController < ApplicationController
       end
     end
   end
-  
+
 
   def show
   end

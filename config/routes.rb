@@ -66,9 +66,12 @@ Courses::Application.routes.draw do
 
   resources :posts
   # resources :posts, only: [:create, :destroy]
+  resources :books do
+    post 'search', on: :collection
+  end
 
-  resources :books # генерит 7 рутов (все)
-  resource :books # генерит 6 рутов кроме индекс
+  # resources :books # генерит 7 рутов (все)
+  # resource :books # генерит 6 рутов кроме индекс
 
   # See how all your routes lay out with "rake routes"
 
