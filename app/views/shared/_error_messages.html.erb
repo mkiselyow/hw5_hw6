@@ -1,12 +1,16 @@
 <% if object.errors.any? %>
+  <div class="noticesWrapper">
   <div id="error_explanation">
-    <div class="alert alert-error">
+    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
       The form contains <%= pluralize(object.errors.count, "error") %>.
     </div>
     <ul>
     <% object.errors.full_messages.each do |msg| %>
-      <li>* <%= msg %></li>
+      <li>* <a class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
+      <%= msg %>
+    </div></li>
     <% end %>
     </ul>
+  </div>
   </div>
 <% end %>

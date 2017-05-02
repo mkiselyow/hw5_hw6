@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include SessionsHelper
+  respond_to :html, :js
 
   def handle_unverified_request
     sign_out
@@ -32,7 +33,6 @@ class ApplicationController < ActionController::Base
   def correct_user
     @user = User.find(params[:id])
     redirect_to root_path, notice: "Wrong URL!" unless current_user?(@user)
-    
   end
 
   helper_method :current_user
