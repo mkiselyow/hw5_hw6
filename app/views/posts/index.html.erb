@@ -1,33 +1,17 @@
-<h1>Index Posts</h1>
-
-<h2>Posts:</h2>
-<%= will_paginate %>
-<ul class="posts">
-  <% @posts.each do |post|  %>
-  <li><strong><%= post.title %></strong><br><%= post.body %><li>
-  <p>
-    <%= link_to 'Edit', edit_post_path(post) %>
-    <%= link_to 'Delete', post, :confirm => "Are you sure?", :method => :delete %>
-  </p>
-  <hr>
-  <% end %>
-</ul>
-<p><%= link_to "Add a New Post", new_post_path %></p>
-<%= will_paginate %>
 
 <% if signed_in? %>
-  <div class="row">
-    <aside class="span4">
+
+
+    <aside class="col-md-4">
       <section>
         <%= render 'shared/user_info' %>
       </section>
-      <section>
+      <section class="add_post">
         <%= render 'shared/post_form' %>
       </section>
     </aside>
-  </div>
 <% else %>
-  <div class="center hero-unit">
+  <div class="col-md-12">
     <h1>Welcome to the Sample App</h1>
 
     <h2>
@@ -42,7 +26,20 @@
   <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
 <% end %>
 
+<div class="col-md-8">
 
-<%#= @user.posts %>
-<%#= @user.@posts %>
+  <h2>Posts:</h2>
+  <ul class="posts" id="posts">
+    <% @posts.each do |post|  %>
+    <li><strong><%= post.title %></strong><br><%= post.body %><li>
+    <p>
+      <%= link_to 'Edit', edit_post_path(post) %>
+      <%= link_to 'Delete', post, :confirm => "Are you sure?", :method => :delete %>
+    </p>
+    <hr>
+    <% end %>
+  </ul>
+  <p><%= link_to "Add a New Post", new_post_path %></p>
+  <%= will_paginate %>
 
+</div>

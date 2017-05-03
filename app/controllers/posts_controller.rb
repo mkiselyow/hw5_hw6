@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_filter :authorize, only: [:edit, :destroy, :update]
-  before_filter :correct_user,   only: [:edit, :update]
+  before_filter :correct_user,   only: [:edit, :update, :destroy]
+  
 
   def new
     @post = Post.new
@@ -8,11 +9,17 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(params[:post])
-    if @post.save
-      flash[:success] = "Post created!"
-      redirect_to root_url
-    else
-      render 'static_pages/home'
+    respond_to do |format|
+      if @post.save
+        flash[:success] = "Post created!"
+        format.html { redirect_to @post }
+        format.js 
+        format.json { render json: @post, status: :created, location: @post }
+      else
+        flash.now[:error] = "your message"
+        @feed_items = []
+        render 'static_pages/home'
+      end
     end
   end
 
@@ -34,9 +41,13 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path, :notice => 'The Post has been deleted!'
+    # redirect_to root_path, :notice => 'The Post has been deleted!'
+    respond_to do |format|
+      format.html { redirect_to posts_url }
+      format.js { render :layout => false }
+      format.json { head :no_content }
+    end
   end
 
   def update
@@ -47,4 +58,10 @@ class PostsController < ApplicationController
       render "edit"
     end
   end
+  private
+
+    def correct_user
+      @post = current_user.posts.find_by_id(params[:id])
+      redirect_to root_url, :notice => 'Can\'t' if @post.nil? 
+    end
 end
