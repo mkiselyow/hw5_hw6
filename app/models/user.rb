@@ -62,6 +62,11 @@ has_secure_password
   		p "#{self.first_name}" + " #{self.last_name}"
   	end
 
+    def feed
+      # Это предварительное решение. См. полную реализацию в "Following users".
+      Post.where("user_id = ?", id)
+    end
+
   	def self.to_csv(options = {})
   		# attributes = %w{id first_name last_name username email password birthday}
   		CSV.generate(options) do |csv|

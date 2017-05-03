@@ -1,0 +1,36 @@
+<% if signed_in? %>
+  <div class="row">
+    .
+    .
+    <aside class="col-md-4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+    
+
+      <section class="add_post" id="add_post">
+        <h3>Post Add</h3>
+        <%= render 'shared/post_form' %>
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <h3>Post Feed</h3>
+      <div id="posts"></div>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+
+<% else %>
+
+  <div class="center hero-unit">
+    <h1>Welcome to the Sample App</h1>
+    <h2>
+      This is the home page for the
+      <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
+      sample application.
+    </h2>
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+    <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+  </div>
+
+<% end %>

@@ -49,12 +49,16 @@ Courses::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root to: 'users#index'
+  # root to: 'users#index'
   resources :users do
     collection { post :import}
   end
 
+  root to: "static_pages#home"
+  get "/home" => "static_pages#home"
+
   resources :sessions, only: [:new, :create, :destroy]
+
 
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
@@ -62,9 +66,12 @@ Courses::Application.routes.draw do
 
   resources :posts
   # resources :posts, only: [:create, :destroy]
+  resources :books do
+    post 'search', on: :collection
+  end
 
-  resources :books # генерит 7 рутов (все)
-  resource :books # генерит 6 рутов кроме индекс
+  # resources :books # генерит 7 рутов (все)
+  # resource :books # генерит 6 рутов кроме индекс
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,0 +1,3 @@
+$("#add_post").html("<%= j render(:partial => 'posts/post_added') %>");
+$(".posts_count").html("<%= pluralize(current_user.posts.count, "post") %>");
+$('#posts').load("<%= escape_javascript(render partial: "shared/feed", collection: @feed_items) %>");

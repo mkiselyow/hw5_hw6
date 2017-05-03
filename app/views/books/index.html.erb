@@ -1,0 +1,10 @@
+<h1>Books</h1>
+<table border="1">
+  <% @books.each do |book| %>
+    <%= render 'row', book: book %>
+  <% end %>
+</table>
+<br><br>
+<%= render 'search_form' %>
+<%= link_to 'Add New Book', '#', id: 'add_book' %>
+<%= render 'form' %>

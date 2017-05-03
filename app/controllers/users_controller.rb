@@ -1,8 +1,9 @@
 	class UsersController < ApplicationController
 	require 'roo'
-	before_filter :authorize, only: [:edit, :update]
+	before_filter :authorize,      only: [:edit, :update]
 	before_filter :correct_user,   only: [:edit, :update]
 	before_filter :admin_user,     only: :destroy
+  
 	
 	# before_filter :check_auth
 	# before_filter :book, only: [:show, :edit, :update, :destroy]
@@ -31,11 +32,15 @@
 	end
 
 	def index
-		@users = User.order(:username).paginate(page: params[:page])
-		respond_to do |format|
-			format.html
-			format.xls #{ send_data @users.to_csv(col_sep: "\t") }
-			format.csv { send_data @users.to_csv}
+    if params[:search]
+      @users = User.order(:username).paginate(page: params[:page]).find(:all, :conditions => ['username LIKE ?', "%#{params[:search]}%"])
+    else
+  		@users = User.order(:username).paginate(page: params[:page])
+  		respond_to do |format|
+  			format.html
+  			format.xls #{ send_data @users.to_csv(col_sep: "\t") }
+  			format.csv { send_data @users.to_csv}
+      end
 		end
 	end
 
