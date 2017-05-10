@@ -54,8 +54,8 @@ Courses::Application.routes.draw do
     collection { post :import}
   end
 
-  root to: "static_pages#home"
-  get "/home" => "static_pages#home"
+  root to: "static_pages#index"
+  get "/home" => "static_pages#index"
 
   resources :sessions, only: [:new, :create, :destroy]
 

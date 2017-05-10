@@ -33,8 +33,12 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post=Post.find(params[:title])
+    if signed_in?
+      @post  = current_user.posts.build
+      @feed_items = current_user.feed.paginate(page: params[:page])
+    end
   end
+
 
   def edit
     @post = Post.find(params[:id])

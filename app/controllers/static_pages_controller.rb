@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
 
-  def home
+  def index
     if signed_in?
       @post  = current_user.posts.build
       @feed_items = current_user.feed.paginate(page: params[:page])
@@ -19,6 +19,7 @@ class StaticPagesController < ApplicationController
 
   def create
     @post = current_user.posts.build(params[:post])
+    @feed_items = current_user.feed.paginate(page: params[:page])
     respond_to do |format|
       if @post.save
         flash[:success] = "Post created!"
@@ -35,5 +36,9 @@ class StaticPagesController < ApplicationController
 
 
   def show
+    if signed_in?
+      @post  = current_user.posts.build
+      @feed_items = current_user.feed.paginate(page: params[:page])
+    end
   end
 end
