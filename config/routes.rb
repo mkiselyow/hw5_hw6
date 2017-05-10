@@ -54,10 +54,16 @@ Courses::Application.routes.draw do
     collection { post :import}
   end
 
+  resources :users do
+    resources :posts
+  end
+
   root to: "static_pages#index"
   get "/home" => "static_pages#index"
 
   resources :sessions, only: [:new, :create, :destroy]
+
+  match 'index', to: 'static_pages#index', via: [:get, :post]
 
 
   match '/signup', to: 'users#new'
