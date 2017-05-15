@@ -3,7 +3,6 @@ ruby '2.3.3'
 
 gem 'rails', '3.2.22.5'
 gem 'mysql2', '0.3.21'
-gem 'faker', '1.0.1'
 gem 'iconv'
 gem 'roo-xls'
 gem 'will_paginate', '3.0.3'
@@ -19,6 +18,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'test-unit', '~> 3.0'
   gem 'pry'
+  gem 'faker', '1.0.1'
+  gem 'factory_girl_rails'
 end
 
 # Bundle edge Rails instead:

@@ -60,6 +60,11 @@ GEM
     erubis (2.7.0)
     eventmachine (1.2.3)
     execjs (2.7.0)
+    factory_girl (4.8.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.8.0)
+      factory_girl (~> 4.8.0)
+      railties (>= 3.0.0)
     faker (1.0.1)
       i18n (~> 0.4)
     gravtastic (3.2.6)
@@ -189,6 +194,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise-async
   em-postgres
+  factory_girl_rails
   faker (= 1.0.1)
   gravtastic
   iconv
