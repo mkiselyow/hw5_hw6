@@ -16,4 +16,8 @@ class StaticPagesController < ApplicationController
 
   def show
   end
+
+  def update_users_list
+    
+  end
 end

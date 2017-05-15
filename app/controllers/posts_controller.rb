@@ -11,6 +11,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(params[:post])
     respond_to do |format|
       if @post.save
+        @feed_items = current_user.feed.paginate(page: params[:page])
         flash[:success] = "Post created!"
         format.html { redirect_to @post }
         format.js 
