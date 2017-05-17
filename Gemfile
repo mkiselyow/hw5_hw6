@@ -12,6 +12,7 @@ gem 'sass', '3.2.13'
 gem 'thin'
 gem 'devise-async'
 gem 'em-postgres'
+gem 'social-share-button'
 
 
 group :development, :test do

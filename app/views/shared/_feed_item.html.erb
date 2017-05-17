@@ -5,6 +5,12 @@
   </span><br>
   <span class="content"><u><%= feed_item.title %></u></span><br>
   <span class="content"><%= feed_item.body %></span><br>
+  <span class="content">
+  <%= social_share_button_tag(feed_item.title) %><br>
+  <%= social_share_button_tag(feed_item.title, 'data-twitter-title' => 'TheTitleForTwitter') %><br>
+  <%= social_share_button_tag(feed_item.title, :allow_sites => %w(twitter facebook)) %><br>
+  <%= social_share_button_tag(@post.title, :rel => "twipsy") %><br>
+  <%= social_share_button_tag(feed_item.title, :url => "http://super_puper_twitter.com/foo/bar") %></span><br>
   <span class="timestamp"><small>
     Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
   </small></span>
